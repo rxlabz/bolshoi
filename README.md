@@ -10,5 +10,5 @@ Bolshoi depends on Flutter SDK, so you need to use `flutter packages get` (and n
 
 ![screen](screen.gif)
 
-cf. [demo](http://github.com/rxlabz/bolshoi/example/)
+cf. [demo](https://github.com/rxlabz/bolshoi/tree/master/example/bolshoi_demo)
 

@@ -1,3 +1,3 @@
 # bolshoi_demo
 
-![screen](screen.gif)
+![screen](https://github.com/rxlabz/bolshoi/blob/master/screen.gif)
