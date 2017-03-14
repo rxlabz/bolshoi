@@ -4,8 +4,8 @@ import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:flutter/animation.dart';
 
-typedef void Animator(double value);
-//typedef void AnimatorWatcher(AnimationStatus);
+typedef void Animator(dynamic value);
+//typedef void Animator(double value);
 
 /// interface for animation and group of animations
 abstract class PropertyAnimationBase {
@@ -23,6 +23,7 @@ abstract class PropertyAnimationBase {
 
   void forward();
   void reverse();
+  void stop();
 }
 
 ///single property animation
@@ -31,14 +32,27 @@ class PropertyAnimation extends PropertyAnimationBase {
   AnimationController _anim;
   CurvedAnimation _curve;
   Tween _tween;
-  /*CurveTween _cTween;*/
+  int milliseconds;
 
-  PropertyAnimation(int milliseconds,
-      {@required TickerProvider vsync, @required Animator animator, Curve curve, Tween tween,})
+  PropertyAnimation(
+    this.milliseconds, {
+    @required Animator animator,
+    @required Curve curve,
+    @required Tween tween,
+    TickerProvider vsync,
+  })
       : _tween = tween {
     _statu$ = _statu$Control.stream;
+
+    if (vsync != null) {
+      initAnim(vsync, animator: animator, curve: curve);
+    }
+  }
+
+  void initAnim(TickerProvider vsync, {Animator animator, Curve curve}) {
     _anim = new AnimationController(
         duration: new Duration(milliseconds: milliseconds), vsync: vsync);
+
     _curve = new CurvedAnimation(parent: _anim, curve: curve)
       ..addListener(() => animator(_tween.evaluate(_curve)))
       ..addStatusListener(onStatus);
@@ -50,6 +64,10 @@ class PropertyAnimation extends PropertyAnimationBase {
 
   void reverse() {
     _anim.reverse();
+  }
+
+  void stop() {
+    _anim.stop();
   }
 
   void onStatus(status) {
@@ -75,5 +93,9 @@ class PropertiesAnimation extends PropertyAnimationBase {
     _anims.first.statu$.listen((status) {
       if (status == AnimationStatus.dismissed) _statu$Control.add(status);
     });
+  }
+
+  void stop() {
+    _anims.forEach((_anim) => _anim.stop());
   }
 }
