@@ -1,0 +1,11 @@
+name: bolshoi_demo
+description: A Bolshoi lib demo
+
+dependencies:
+  flutter:
+    sdk: flutter
+  bolshoi:
+    path: /Users/rxlabz/dev/libs/rx/flutter/bolshoi
+
+flutter:
+  uses-material-design: true
