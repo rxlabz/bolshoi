@@ -1,28 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="WEB_MODULE" version="4">
+<module type="FLUTTER_MODULE_TYPE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/example/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/test/packages" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/.idea/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/.idea/runConfigurations/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/taskArtifacts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/tasks/_app_compileDebugJavaWithJavac/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/3.2/tasks/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/.gradle/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/assets/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/assets/shaders/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/assets/shaders/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/res/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/res/resValues/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/res/resValues/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/res/rs/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/res/rs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/aidl/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/aidl/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/apt/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/apt/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/buildConfig/debug/com/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/buildConfig/debug/com/yourcompany/bolshoiDemo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/buildConfig/debug/com/yourcompany/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/buildConfig/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/buildConfig/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/r/debug/com/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/r/debug/com/yourcompany/bolshoiDemo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/r/debug/com/yourcompany/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/r/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/r/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/rs/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/generated/source/rs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/assets/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/assets/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/blame/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/blame/res/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/blame/res/debug/single/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/blame/res/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/classes/debug/com/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/classes/debug/com/yourcompany/bolshoiDemo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/classes/debug/com/yourcompany/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/classes/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/classes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/dependency-cache/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/dependency-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/flutter/debug/flx/fonts/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/flutter/debug/flx/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/flutter/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/flutter/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental-safeguard/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental-safeguard/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/compileDebugAidl/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugAssets/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugJniLibFolders/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugResources/aapt-temp/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugResources/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/mergeDebugShaders/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageDebug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageDebug/zip-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageDebugAndroidTest/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageDebugAndroidTest/zip-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageProfile/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageProfile/zip-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageRelease/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packageRelease/zip-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/processDebugResources/aapt-temp/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/incremental/processDebugResources/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/jniLibs/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/jniLibs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/manifests/full/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/manifests/full/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/manifests/instant-run/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/manifests/instant-run/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/manifests/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/pre-dexed/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/pre-dexed/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/mipmap-hdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/mipmap-mdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/mipmap-xxhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/merged/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/res/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/rs/debug/lib/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/rs/debug/obj/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/rs/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/rs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/shaders/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/shaders/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/symbols/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/symbols/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/debug/folders/1000/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/debug/folders/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/dex/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJavaRes/debug/jars/2/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJavaRes/debug/jars/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJavaRes/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJavaRes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJniLibs/debug/jars/2000/1f/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJniLibs/debug/jars/2000/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJniLibs/debug/jars/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJniLibs/debug/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/mergeJniLibs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/intermediates/transforms/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/outputs/apk/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/outputs/logs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/outputs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/tmp/compileDebugJavaWithJavac/emptySourcePathRef/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/tmp/compileDebugJavaWithJavac/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/tmp/flutterBuildX86Jar/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/build/tmp/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/java/com/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/java/com/yourcompany/bolshoi_demo/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/java/com/yourcompany/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/java/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/mipmap-hdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/mipmap-mdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/mipmap-xhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/mipmap-xxhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/mipmap-xxxhdpi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/main/res/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/app/src/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/build/intermediates/dex-cache/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/build/intermediates/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/build/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/android/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/build" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Flutter/Flutter.framework/Headers/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Flutter/Flutter.framework/Modules/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Flutter/Flutter.framework/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Flutter/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Frameworks/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Headers/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Local Podspecs/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/xcshareddata/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/xcshareddata/xcschemes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/xcuserdata/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/xcuserdata/rxlabz.xcuserdatad/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Pods.xcodeproj/xcuserdata/rxlabz.xcuserdatad/xcschemes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Target Support Files/Pods-Runner/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/Target Support Files/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Pods/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner.xcodeproj/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner.xcodeproj/project.xcworkspace/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner.xcodeproj/xcshareddata/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner.xcodeproj/xcshareddata/xcschemes/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner.xcworkspace/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner/Assets.xcassets/AppIcon.appiconset/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner/Assets.xcassets/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner/Base.lproj/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/Runner/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/ios/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/lib/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/packages" />
       <excludeFolder url="file://$MODULE_DIR$/example/packages" />
       <excludeFolder url="file://$MODULE_DIR$/packages" />
       <excludeFolder url="file://$MODULE_DIR$/test/packages" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHP Runtime" type="php">
-        <CLASSES>
-          <root url="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/stubs/standard" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="Dart SDK" level="application" />
+    <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
   </component>
 </module>

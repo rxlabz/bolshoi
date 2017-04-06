@@ -5,7 +5,7 @@ dependencies:
   flutter:
     sdk: flutter
   bolshoi:
-    path: /Users/rxlabz/dev/libs/rx/flutter/bolshoi
+    path: /Users/rxlabz/dev/projects/darxlibz/bolshoi
 
 flutter:
   uses-material-design: true
