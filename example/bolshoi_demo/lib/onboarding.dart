@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
-import 'dart:ui' as ui;
 
+import 'package:bolshoi/bolshoi.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:bolshoi/bolshoi.dart';
 
 final titleStyle = new TextStyle(color: Colors.white, fontSize: 64.0);
 final btStyle = new TextStyle(color: Colors.cyan[500], fontSize: 24.0);
@@ -185,7 +184,7 @@ class OnBoardingDemoState extends State<OnBoardingDemo>
                 ))),
       ]);
       return new DecoratedBox(
-          decoration: new BoxDecoration(backgroundColor: Colors.cyan[800]),
+          decoration: new BoxDecoration(color: Colors.cyan[800]),
           child: new SizedBox(
               width: size.width, height: size.height, child: mainStack));
     });

@@ -45,7 +45,7 @@ class AnimScene0State extends AnimSceneState<AnimScene0> {
               height: 100.0,
               child: new DecoratedBox(
                   decoration:
-                      new BoxDecoration(backgroundColor: Colors.orange[500]))))
+                      new BoxDecoration(color: Colors.orange[500]))))
     ]));
   }
 }
@@ -89,7 +89,7 @@ class AnimScene1State extends AnimSceneState<AnimScene1> {
               height: 100.0,
               child: new DecoratedBox(
                   decoration: new BoxDecoration(
-                      backgroundColor: colorTween.evaluate(anim)))))
+                      color: colorTween.evaluate(anim)))))
     ]));
   }
 }
@@ -111,8 +111,8 @@ class AnimScene2State extends AnimSceneState<AnimScene2> {
   PropertiesAnimation animations;
   Color color;
 
-  final c1 = Colors.blue[300];
-  final c2 = Colors.green[300];
+  final Color c1 = Colors.blue[300];
+  final Color c2 = Colors.green[300];
 
   void initState() {
     color = c1;
@@ -144,7 +144,7 @@ class AnimScene2State extends AnimSceneState<AnimScene2> {
               height: 100.0,
               child: new DecoratedBox(
                   decoration: new BoxDecoration(
-                      shape: BoxShape.circle, backgroundColor: color))))
+                      shape: BoxShape.circle, color: color))))
     ]));
   }
 }

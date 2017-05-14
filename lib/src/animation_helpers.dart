@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:bolshoi/src/property_animation.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:bolshoi/src/property_animation.dart';
 
 const kDuration = const Duration(milliseconds: 500);
 const kDuration_ms = 500;
@@ -23,7 +23,6 @@ class AnimationQueue extends ListQueue<PropertyAnimationBase> {
   StreamController<AnimationStatus> _statu$Control =
       new StreamController<AnimationStatus>.broadcast();
 
-  @override
   Stream<AnimationStatus> _statu$;
 
   Stream<AnimationStatus> get statu$ => _statu$;

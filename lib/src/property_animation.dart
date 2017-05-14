@@ -1,8 +1,8 @@
 import 'dart:async';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
-import 'package:flutter/animation.dart';
 
 typedef void Animator(dynamic value);
 //typedef void Animator(double value);
@@ -12,7 +12,6 @@ abstract class PropertyAnimationBase {
   StreamController<AnimationStatus> _statu$Control =
       new StreamController<AnimationStatus>.broadcast();
 
-  @override
   Stream<AnimationStatus> _statu$;
 
   Stream<AnimationStatus> get statu$ => _statu$;
