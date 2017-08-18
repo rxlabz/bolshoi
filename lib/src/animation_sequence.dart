@@ -1,51 +1,63 @@
 import 'dart:async';
 import 'dart:collection';
 
-import 'package:bolshoi/src/property_animation.dart';
+import 'package:bolshoi/bolshoi.dart';
 import 'package:flutter/animation.dart';
-import 'package:flutter/widgets.dart';
 
-const kDuration = const Duration(milliseconds: 500);
-const kDuration_ms = 500;
-const kDuration2 = const Duration(milliseconds: 360);
-const kDuration2_ms = 360;
+/// sequence animations of properties
+class AnimationSequence extends ListQueue<PropertyAnimationBase>
+    implements PropertyAnimationBase {
+  bool isComplete = false;
+  bool isDismissed = true;
 
-/// animation group
-///
-/// future : base on bi-directionnal queue ?
-/// [BidirectionalIterator] [cf. doc](https://api.dartlang.org/stable/1.22.1/dart-core/BidirectionalIterator-class.html)
-///
-class AnimationQueue extends ListQueue<PropertyAnimationBase> {
   AnimationStatus currentStatus = AnimationStatus.dismissed;
 
   List<PropertyAnimationBase> _completedQueue;
 
-  StreamController<AnimationStatus> _statu$Control =
-      new StreamController<AnimationStatus>.broadcast();
+  Queue<PropertyAnimationBase> currentAnimationList;
 
-  Stream<AnimationStatus> _statu$;
+  PropertyAnimationBase get currentAnim =>
+      currentStatus == AnimationStatus.reverse ||
+              currentStatus == AnimationStatus.completed
+          ? _completedQueue.last
+          : _iteratorRef.current;
 
-  Stream<AnimationStatus> get statu$ => _statu$;
+  List<PropertyAnimation> _animList;
+
+  int currentIndex = 0;
 
   Iterator _iteratorRef;
 
-  AnimationQueue() {
+  @override
+  Stream<AnimationStatus> _statu$;
+
+  @override
+  StreamController<AnimationStatus> _statu$Control =
+      new StreamController<AnimationStatus>.broadcast();
+
+  // TODO: implement statu$
+  @override
+  Stream<AnimationStatus> get statu$ => _statu$;
+
+  AnimationSequence() {
     _statu$ = _statu$Control.stream;
     _completedQueue = new List<PropertyAnimationBase>();
   }
 
-  /// create an animation queue from a list of PropertyAnimationBase
-  factory AnimationQueue.from(Iterable<PropertyAnimationBase> elements) {
-    return new AnimationQueue()..addAll(elements);
+  factory AnimationSequence.from(Iterable<PropertyAnimationBase> elements) {
+    return new AnimationSequence()..addAll(elements);
   }
 
-  /// create an iterator reference if none
   void _initIterator() {
     if (_iteratorRef == null) {
-      _iteratorRef = iterator;
-      _iteratorRef.moveNext();
-      _completedQueue = map((a) => a).toList();
+      _clearIterator();
     }
+  }
+
+  void _clearIterator() {
+    _iteratorRef = iterator;
+    _iteratorRef.moveNext();
+    _completedQueue = map((a) => a).toList();
   }
 
   /// start the animation chain
@@ -66,7 +78,8 @@ class AnimationQueue extends ListQueue<PropertyAnimationBase> {
       });
       _iteratorRef.current.forward();
       currentStatus = AnimationStatus.forward;
-    }
+    } else
+      print('AnimationSequence.forward  => empty');
   }
 
   /// reverse all animations
@@ -79,6 +92,7 @@ class AnimationQueue extends ListQueue<PropertyAnimationBase> {
             if (_completedQueue.isNotEmpty)
               reverse();
             else {
+              _clearIterator();
               currentStatus = AnimationStatus.dismissed;
               _statu$Control.add(status);
             }
@@ -89,4 +103,16 @@ class AnimationQueue extends ListQueue<PropertyAnimationBase> {
       current.reverse();
     }
   }
+
+  void stop() {
+    print('AnimationSequence.stop... ');
+    currentAnim.stop();
+  }
+
+  /*void pause() {
+    print('AnimationSequence.pause... ');
+    currentAnim.stop();
+    //_anims.forEach((_anim) => _anim.stop());
+  }*/
+
 }

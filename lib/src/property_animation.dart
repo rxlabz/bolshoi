@@ -1,11 +1,11 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 
 typedef void Animator(dynamic value);
-//typedef void Animator(double value);
 
 /// interface for animation and group of animations
 abstract class PropertyAnimationBase {
@@ -21,7 +21,9 @@ abstract class PropertyAnimationBase {
   }
 
   void forward();
+
   void reverse();
+
   void stop();
 }
 
@@ -36,9 +38,9 @@ class PropertyAnimation extends PropertyAnimationBase {
   PropertyAnimation(
     this.milliseconds, {
     @required Animator animator,
-    @required Curve curve,
     @required Tween tween,
-    TickerProvider vsync,
+    /*@required */ Curve curve = Curves.linear,
+    @required TickerProvider vsync,
   })
       : _tween = tween {
     _statu$ = _statu$Control.stream;
@@ -69,16 +71,16 @@ class PropertyAnimation extends PropertyAnimationBase {
     _anim.stop();
   }
 
-  void onStatus(status) {
+  void onStatus(AnimationStatus status) {
     _statu$Control.add(status);
   }
 }
 
 /// parallel animations of properties
-class PropertiesAnimation extends PropertyAnimationBase {
+class AnimationGroup extends PropertyAnimationBase {
   List<PropertyAnimation> _anims;
 
-  PropertiesAnimation(this._anims);
+  AnimationGroup(this._anims);
 
   void forward() {
     _anims.forEach((_anim) => _anim.forward());
@@ -98,3 +100,4 @@ class PropertiesAnimation extends PropertyAnimationBase {
     _anims.forEach((_anim) => _anim.stop());
   }
 }
+
