@@ -6,7 +6,7 @@ import 'package:flutter/animation.dart';
 
 /// sequence animations of properties
 class AnimationSequence extends ListQueue<PropertyAnimationBase>
-    implements PropertyAnimationBase {
+    implements PropertyAnimationBase,IAnimation {
   bool isComplete = false;
   bool isDismissed = true;
 

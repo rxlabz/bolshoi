@@ -1,19 +1,16 @@
 import 'package:bolshoi/bolshoi.dart';
+import 'package:bolshoi_demo2/animation_player.dart';
 import 'package:flutter/material.dart';
 
 abstract class AnimSceneState<T extends StatefulWidget>
     extends State<StatefulWidget> with TickerProviderStateMixin {
   String title;
-  AnimationController anim;
+  AnimationFacade anim;
   double posLeft;
 }
 
 class AnimScene0 extends StatefulWidget {
   AnimScene0();
-
-  /*factory AnimScene0.instance() {
-    return new AnimScene0();
-  }*/
 
   @override
   State<StatefulWidget> createState() => new AnimScene0State();
@@ -22,7 +19,7 @@ class AnimScene0 extends StatefulWidget {
 class AnimScene0State extends AnimSceneState<AnimScene0> {
   @override
   void initState() {
-    anim = new AnimationController(
+    anim = new AnimationFacade(
         duration: new Duration(milliseconds: 500),
         vsync: this,
         lowerBound: 50.0,
@@ -36,7 +33,7 @@ class AnimScene0State extends AnimSceneState<AnimScene0> {
   Widget build(BuildContext context) {
     return new Container(
         child: new Stack(children: [
-      new ButtonBar(anim),
+      new AnimationPlayer(anim),
       new Positioned(
           left: posLeft,
           top: 50.0,
@@ -44,8 +41,7 @@ class AnimScene0State extends AnimSceneState<AnimScene0> {
               width: 100.0,
               height: 100.0,
               child: new DecoratedBox(
-                  decoration:
-                      new BoxDecoration(color: Colors.orange[500]))))
+                  decoration: new BoxDecoration(color: Colors.orange[500]))))
     ]));
   }
 }
@@ -66,9 +62,9 @@ class AnimScene1State extends AnimSceneState<AnimScene1> {
   ColorTween colorTween;
 
   void initState() {
-    anim = new AnimationController(
-        duration: new Duration(milliseconds: 500),
-        vsync: this)..addListener(() => setState(() => posLeft = anim.value));
+    anim = new AnimationFacade(
+        duration: new Duration(milliseconds: 500), vsync: this)
+      ..addListener(() => setState(() => posLeft = anim.value));
     posLeft = anim.value;
     tween = new Tween<double>(begin: 50.0, end: 400.0);
     colorTween =
@@ -80,7 +76,7 @@ class AnimScene1State extends AnimSceneState<AnimScene1> {
   Widget build(BuildContext context) {
     return new Container(
         child: new Stack(children: [
-      new ButtonBar(anim),
+      new AnimationPlayer(anim),
       new Positioned(
           left: tween.evaluate(anim),
           top: 50.0,
@@ -88,8 +84,8 @@ class AnimScene1State extends AnimSceneState<AnimScene1> {
               width: 100.0,
               height: 100.0,
               child: new DecoratedBox(
-                  decoration: new BoxDecoration(
-                      color: colorTween.evaluate(anim)))))
+                  decoration:
+                      new BoxDecoration(color: colorTween.evaluate(anim)))))
     ]));
   }
 }
@@ -128,6 +124,7 @@ class AnimScene2State extends AnimSceneState<AnimScene2> {
           tween: new ColorTween(begin: c1, end: c2),
           animator: (Color c) => setState(() => color = c))
     ]);
+
     super.initState();
   }
 
@@ -135,7 +132,7 @@ class AnimScene2State extends AnimSceneState<AnimScene2> {
   Widget build(BuildContext context) {
     return new Container(
         child: new Stack(children: [
-      new BolshoiButtonBar(animations),
+      new BolshoiAnimationPlayer(animations),
       new Positioned(
           left: posLeft,
           top: 50.0,
@@ -143,8 +140,8 @@ class AnimScene2State extends AnimSceneState<AnimScene2> {
               width: 100.0,
               height: 100.0,
               child: new DecoratedBox(
-                  decoration: new BoxDecoration(
-                      shape: BoxShape.circle, color: color))))
+                  decoration:
+                      new BoxDecoration(shape: BoxShape.circle, color: color))))
     ]));
   }
 }
@@ -161,8 +158,6 @@ class AnimScene3 extends StatefulWidget {
 }
 
 class AnimScene3State extends AnimSceneState<AnimScene3> {
-  /*Tween tween;
-  ColorTween colorTween;*/
   AnimationSequence animations;
   Color color;
 
@@ -190,7 +185,7 @@ class AnimScene3State extends AnimSceneState<AnimScene3> {
   Widget build(BuildContext context) {
     return new Container(
         child: new Stack(children: [
-      new BolshoiButtonBar(animations),
+      new AnimationPlayer(animations),
       new Positioned(
           left: posLeft,
           top: 50.0,
@@ -198,59 +193,9 @@ class AnimScene3State extends AnimSceneState<AnimScene3> {
               width: 100.0,
               height: 100.0,
               child: new DecoratedBox(
-                  decoration: new BoxDecoration(
-                      shape: BoxShape.circle, color: color))))
+                  decoration:
+                      new BoxDecoration(shape: BoxShape.circle, color: color))))
     ]));
   }
 }
 
-
-class ButtonBar extends Container {
-  final AnimationController anim;
-
-  ButtonBar(this.anim);
-
-  Widget getButton(String label, VoidCallback onPressed) => new SizedBox(
-    width: 120.0,
-    height: 48.0,
-    child: new RaisedButton(child: new Text(label), onPressed: onPressed));
-
-  @override
-  Widget build(BuildContext context) {
-    final posLeft = (MediaQuery.of(context).size.width - 260.0) / 2 - 200;
-
-    return new Positioned(
-      bottom: 60.0,
-      left: posLeft,
-      child: new Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        getButton('Play', () => anim.forward()),
-        getButton('Pause', () => anim.stop()),
-        getButton('Reverse', () => anim.reverse())
-      ]));
-  }
-}
-
-class BolshoiButtonBar extends Container {
-  final PropertyAnimationBase anim;
-
-  BolshoiButtonBar(this.anim);
-
-  Widget getButton(String label, VoidCallback onPressed) => new SizedBox(
-    width: 120.0,
-    height: 48.0,
-    child: new RaisedButton(child: new Text(label), onPressed: onPressed));
-
-  @override
-  Widget build(BuildContext context) {
-    final posLeft = (MediaQuery.of(context).size.width - 260.0) / 2 - 200;
-
-    return new Positioned(
-      bottom: 60.0,
-      left: posLeft,
-      child: new Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        getButton('Play', () => anim.forward()),
-        getButton('Pause', () => anim.stop()),
-        getButton('Reverse', () => anim.reverse())
-      ]));
-  }
-}
