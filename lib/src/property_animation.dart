@@ -1,15 +1,16 @@
 import 'dart:async';
-import 'dart:collection';
 
+import 'package:bolshoi/bolshoi.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 
-typedef void Animator(dynamic value);
+//part 'animation_group.dart';
+typedef void OnTick<T>(T value);
 
 /// interface for animation and group of animations
-abstract class PropertyAnimationBase {
-  StreamController<AnimationStatus> _statu$Control =
+abstract class PropertyAnimationBase implements IAnimation {
+  StreamController<AnimationStatus> statu$Control =
       new StreamController<AnimationStatus>.broadcast();
 
   Stream<AnimationStatus> _statu$;
@@ -17,7 +18,7 @@ abstract class PropertyAnimationBase {
   Stream<AnimationStatus> get statu$ => _statu$;
 
   PropertyAnimationBase() {
-    _statu$ = _statu$Control.stream;
+    _statu$ = statu$Control.stream;
   }
 
   void forward();
@@ -25,35 +26,40 @@ abstract class PropertyAnimationBase {
   void reverse();
 
   void stop();
+
+  void dispose();
 }
 
 ///single property animation
 ///
-class PropertyAnimation extends PropertyAnimationBase {
-  AnimationController _anim;
+class Animate<T> extends PropertyAnimationBase {
+  final AnimationController _anim;
+  final Tween<T> _tween;
+  final int msSeconds;
   CurvedAnimation _curve;
-  Tween _tween;
-  int milliseconds;
+  bool loop;
 
-  PropertyAnimation(
-    this.milliseconds, {
-    @required Animator animator,
-    @required Tween tween,
-    /*@required */ Curve curve = Curves.linear,
-    @required TickerProvider vsync,
+  Animate(
+    this.msSeconds, {
+    @required OnTick<T> onTick,
+    @required TickerProvider ticker,
+    Curve curve = Curves.linear,
+    T begin,
+    T end,
+    Tween tween,
+    this.loop: false,
   })
-      : _tween = tween {
-    _statu$ = _statu$Control.stream;
+      : _tween = tween ?? new Tween<T>(begin: begin, end: end),
+        _anim = new AnimationController(
+            duration: new Duration(milliseconds: msSeconds), vsync: ticker) {
+    assert(ticker != null, "vsync must not be null !");
 
-    if (vsync != null) {
-      initAnim(vsync, animator: animator, curve: curve);
-    }
+    _statu$ = statu$Control.stream;
+
+    initAnim(ticker, animator: onTick, curve: curve);
   }
 
-  void initAnim(TickerProvider vsync, {Animator animator, Curve curve}) {
-    _anim = new AnimationController(
-        duration: new Duration(milliseconds: milliseconds), vsync: vsync);
-
+  void initAnim(TickerProvider vsync, {OnTick<T> animator, Curve curve}) {
     _curve = new CurvedAnimation(parent: _anim, curve: curve)
       ..addListener(() => animator(_tween.evaluate(_curve)))
       ..addStatusListener(onStatus);
@@ -72,32 +78,18 @@ class PropertyAnimation extends PropertyAnimationBase {
   }
 
   void onStatus(AnimationStatus status) {
-    _statu$Control.add(status);
+    if (loop) {
+      if (status == AnimationStatus.completed)
+        reverse();
+      else if (status == AnimationStatus.dismissed) forward();
+    }
+    statu$Control.add(status);
+  }
+
+  @override
+  void dispose() {
+    loop = false;
+    if( _anim.isAnimating)
+      _anim.dispose();
   }
 }
-
-/// parallel animations of properties
-class AnimationGroup extends PropertyAnimationBase {
-  List<PropertyAnimation> _anims;
-
-  AnimationGroup(this._anims);
-
-  void forward() {
-    _anims.forEach((_anim) => _anim.forward());
-    _anims.first.statu$.listen((status) {
-      if (status == AnimationStatus.completed) _statu$Control.add(status);
-    });
-  }
-
-  void reverse() {
-    _anims.forEach((_anim) => _anim.reverse());
-    _anims.first.statu$.listen((status) {
-      if (status == AnimationStatus.dismissed) _statu$Control.add(status);
-    });
-  }
-
-  void stop() {
-    _anims.forEach((_anim) => _anim.stop());
-  }
-}
-

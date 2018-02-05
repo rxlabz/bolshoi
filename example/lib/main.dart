@@ -12,6 +12,7 @@ typedef Widget NewScene();
 class PageRow {
   String title;
   NewScene build;
+  bool selected = false;
 
   PageRow(this.title, this.build);
 }
@@ -19,9 +20,13 @@ class PageRow {
 final pages = [
   new PageRow("Basic anim 1", () => new AnimScene0()),
   new PageRow("Basic anim 2", () => new AnimScene1()),
-  new PageRow("Bolshoi anim 3", () => new AnimScene2()),
-  new PageRow("Bolshoi anim 4", () => new AnimScene3()),
-  new PageRow("Bolshoi queue", () => new OnBoardingDemo()),
+  new PageRow("AnimatedWidget", () => new AnimatedWidgetExampleScene()),
+  new PageRow("AnimatedBuilder", () => new AnimatedBuilderExampleScene()),
+  new PageRow("SlideTransition", () => new SlideTransitionExample()),
+  new PageRow("Parallel", () => new ExampleAnimationGroup()),
+  new PageRow("Sequence", () => new ExampleSequence()),
+  new PageRow("Loop", () => new ExampleLoop()),
+  new PageRow("Example", () => new OnBoardingDemo()),
 ];
 
 class TourDAnim extends StatefulWidget {
@@ -47,12 +52,22 @@ class TourDAnimState extends State<TourDAnim> {
                   children: pages
                       .map((p) => new InkWell(
                           child: new Container(
+                              color: p.selected
+                                  ? Colors.grey.shade200
+                                  : Colors.white,
                               height: 60.0,
                               child: new Center(child: new Text(p.title))),
-                          onTap: () =>
-                              setState(() => currentWidget = p.build())))
+                          onTap: () => setState(() {
+                                deselectAll();
+                                p.selected = true;
+                                currentWidget = p.build();
+                              })))
                       .toList()))),
       new Expanded(child: currentWidget),
     ]));
+  }
+
+  void deselectAll() {
+    pages.forEach((p) => p.selected = false);
   }
 }

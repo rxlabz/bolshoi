@@ -1,10 +1,11 @@
 # Bolshoi
 
-Animation helpers for Flutter UI, Bolshoi allows single, sequential or parallel animations, forward and reverse.
+Experimental animation helpers for [Flutter](http://flutter.io) UIs.
+Bolshoi simplifies nested sequential or parallel animations.
 
 ## Installation
 
-Bolshoi depends on Flutter SDK, so you need to use `flutter packages get` (and not `pub get`) to get the dependencies
+Bolshoi depends on Flutter SDK
 
 ### Usage
 
@@ -108,3 +109,4 @@ class AnimScene3State extends AnimSceneState<AnimScene3> {
 }
 
 ```
+

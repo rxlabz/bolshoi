@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:collection';
 
 import 'package:bolshoi/bolshoi.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +25,11 @@ class OnBoardingDemoState extends State<OnBoardingDemo>
   double bt2Bottom = -100.0;
   double bt2Alpha = 0.0;
 
-  AnimationQueue animsQ;
+  AnimationSequence animsQ;
 
-  Queue<PropertyAnimationBase> anims = new Queue();
+  /*Queue<PropertyAnimationBase> anims = new Queue();
 
-  Queue<PropertyAnimationBase> completedAnims = new Queue();
+  Queue<PropertyAnimationBase> completedAnims = new Queue();*/
 
   PropertyAnimationBase currentAnim;
   StreamSubscription<AnimationStatus> currentAnimSub;
@@ -44,88 +43,59 @@ class OnBoardingDemoState extends State<OnBoardingDemo>
   void setBt2Bottom(double v) => setState(() => bt2Bottom = v);
   void setBt2Alpha(double a) => setState(() => bt2Alpha = a);
 
-  void playAnimQueue() {
-    if (!queueComplete) {
-      currentAnim = anims.first;
-      currentAnimSub = currentAnim.statu$.listen(onStatus);
-      currentAnim.forward();
-    } else {
-      currentAnim = completedAnims.last;
-      currentAnimSub = currentAnim.statu$.listen(onStatus);
-      currentAnim.reverse();
-    }
-  }
-
-  void onStatus(AnimationStatus status) {
-    if (!queueComplete) {
-      if (status == AnimationStatus.completed) {
-        currentAnimSub.cancel();
-        currentAnimSub = null;
-        completedAnims.add(anims.removeFirst());
-        if (anims.isNotEmpty)
-          playAnimQueue();
-        else {
-          queueComplete = true;
-        }
-      }
-    } else {
-      if (status == AnimationStatus.dismissed) {
-        currentAnimSub.cancel();
-        currentAnimSub = null;
-        anims.add(completedAnims.removeLast());
-        if (completedAnims.isNotEmpty) {
-          playAnimQueue();
-        } else {
-          queueComplete = false;
-        }
-      }
-    }
-  }
-
   @override
   void initState() {
     final List<PropertyAnimationBase> choregraphy = [
       new AnimationGroup([
-        new PropertyAnimation(kDuration_ms,
-            vsync: this,
+        new Animate<double>(kDuration_ms,
+            ticker: this,
             curve: Curves.fastOutSlowIn,
-            tween: new Tween<double>(begin: -100.0, end: 150.0),
-            animator: setTitleTop),
-        new PropertyAnimation(kDuration_ms,
-            vsync: this,
+            begin: -100.0,
+            end: 150.0,
+            onTick: setTitleTop),
+        new Fade(kDuration_ms,
+            ticker: this,
             curve: Curves.fastOutSlowIn,
-            tween: new Tween<double>(begin: 0.0, end: 1.0),
-            animator: setTitleAlpha)
+            onTick: setTitleAlpha)
       ]),
       new AnimationGroup([
-        new PropertyAnimation(kDuration2_ms,
-            vsync: this,
+        new Animate<double>(kDuration2_ms,
+            ticker: this,
             curve: Curves.easeOut,
-            tween: new Tween<double>(begin: -100.0, end: 280.0),
-            animator: setBtBottom),
-        new PropertyAnimation(kDuration_ms,
-            vsync: this,
+            begin: -100.0,
+            end: 280.0,
+            onTick: setBtBottom),
+        new Animate<double>(kDuration_ms,
+            ticker: this,
             curve: Curves.fastOutSlowIn,
-            tween: new Tween<double>(begin: 0.0, end: 1.0),
-            animator: setBtAlpha)
+            begin: 0.0,
+            end: 1.0,
+            onTick: setBtAlpha)
       ]),
       new AnimationGroup([
-        new PropertyAnimation(kDuration2_ms,
-            vsync: this,
+        new Animate<double>(kDuration2_ms,
+            ticker: this,
             curve: Curves.easeOut,
-            tween: new Tween<double>(begin: -100.0, end: 120.0),
-            animator: setBt2Bottom),
-        new PropertyAnimation(kDuration_ms,
-            vsync: this,
+            begin: -100.0,
+            end: 120.0,
+            onTick: setBt2Bottom),
+        new Animate<double>(kDuration_ms,
+            ticker: this,
             curve: Curves.fastOutSlowIn,
-            tween: new Tween<double>(begin: 0.0, end: 1.0),
-            animator: setBt2Alpha)
+            begin: 0.0,
+            end: 1.0,
+            onTick: setBt2Alpha)
       ])
     ];
-    animsQ = new AnimationQueue();
-    animsQ.addAll(choregraphy);
+    animsQ = new AnimationSequence.from(choregraphy);
     animsQ.forward();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    animsQ.dispose();
+    super.dispose();
   }
 
   @override
@@ -155,8 +125,7 @@ class OnBoardingDemoState extends State<OnBoardingDemo>
                       opacity: btAlpha,
                       child: new RaisedButton(
                           child: new Text('Créer un compte', style: btStyle),
-                          onPressed: () => animsQ
-                              .reverse() /*print('OnBoardingDemoState.build... ')*/,
+                          onPressed: () => animsQ.reverse(),
                           color: Colors.white)))));
       Widget mainStack = new Stack(children: [
         title,
@@ -169,10 +138,11 @@ class OnBoardingDemoState extends State<OnBoardingDemo>
                 child: new Opacity(
                   opacity: bt2Alpha,
                   child: new FlatButton(
-                      child: new Text('Se connecter', style: btStyle2),
-                      textColor: Colors.white,
-                      color: new Color(0x20FFFFFF),
-                      onPressed: () => print('OnBoardingDemoState.build... ')),
+                    child: new Text('Se connecter', style: btStyle2),
+                    textColor: Colors.white,
+                    color: new Color(0x20FFFFFF),
+                    onPressed: () => animsQ.reverse(),
+                  ),
                 ))),
       ]);
       return new DecoratedBox(

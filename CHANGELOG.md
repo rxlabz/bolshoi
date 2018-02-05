@@ -1,5 +1,9 @@
 # Changelog
 
-## 0.0.1
+## 0.1
 
-- Initial version, created by Stagehand
+- animation group ( parallel )
+- animation sequence ( chain )
+- nested animations
+- loop mode
+- Helpers : Fade, Zoom

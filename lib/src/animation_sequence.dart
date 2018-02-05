@@ -6,7 +6,7 @@ import 'package:flutter/animation.dart';
 
 /// sequence animations of properties
 class AnimationSequence extends ListQueue<PropertyAnimationBase>
-    implements PropertyAnimationBase,IAnimation {
+    implements PropertyAnimationBase, IAnimation {
   bool isComplete = false;
   bool isDismissed = true;
 
@@ -22,29 +22,26 @@ class AnimationSequence extends ListQueue<PropertyAnimationBase>
           ? _completedQueue.last
           : _iteratorRef.current;
 
-  List<PropertyAnimation> _animList;
+  //List<PropertyAnimation> _animList;
 
   int currentIndex = 0;
 
   Iterator _iteratorRef;
 
-  @override
   Stream<AnimationStatus> _statu$;
 
-  @override
-  StreamController<AnimationStatus> _statu$Control =
+  StreamController<AnimationStatus> statu$Control =
       new StreamController<AnimationStatus>.broadcast();
 
-  // TODO: implement statu$
-  @override
   Stream<AnimationStatus> get statu$ => _statu$;
 
   AnimationSequence() {
-    _statu$ = _statu$Control.stream;
+    _statu$ = statu$Control.stream;
     _completedQueue = new List<PropertyAnimationBase>();
   }
 
   factory AnimationSequence.from(Iterable<PropertyAnimationBase> elements) {
+
     return new AnimationSequence()..addAll(elements);
   }
 
@@ -73,7 +70,7 @@ class AnimationSequence extends ListQueue<PropertyAnimationBase>
           forward();
         else {
           currentStatus = AnimationStatus.completed;
-          _statu$Control.add(status);
+          statu$Control.add(status);
         }
       });
       _iteratorRef.current.forward();
@@ -94,7 +91,7 @@ class AnimationSequence extends ListQueue<PropertyAnimationBase>
             else {
               _clearIterator();
               currentStatus = AnimationStatus.dismissed;
-              _statu$Control.add(status);
+              statu$Control.add(status);
             }
           } else {
             currentStatus = AnimationStatus.reverse;
@@ -106,7 +103,15 @@ class AnimationSequence extends ListQueue<PropertyAnimationBase>
 
   void stop() {
     print('AnimationSequence.stop... ');
-    currentAnim.stop();
+    forEach((PropertyAnimationBase anim) => anim.stop());
+    _completedQueue.forEach((PropertyAnimationBase anim) => anim.stop());
+    //currentAnim.stop();
+  }
+
+  void dispose() {
+    print('AnimationSequence.dispose... ');
+    forEach((PropertyAnimationBase anim) => anim.dispose());
+    _completedQueue.forEach((PropertyAnimationBase anim) => anim.dispose());
   }
 
   /*void pause() {
@@ -114,5 +119,4 @@ class AnimationSequence extends ListQueue<PropertyAnimationBase>
     currentAnim.stop();
     //_anims.forEach((_anim) => _anim.stop());
   }*/
-
 }

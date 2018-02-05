@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="FLUTTER_MODULE_TYPE" version="4">
+<module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/example/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/packages" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/test/packages" />
       <excludeFolder url="file://$MODULE_DIR$/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/example/bolshoi_demo/build" />
       <excludeFolder url="file://$MODULE_DIR$/example/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/build" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/example/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/packages" />
-      <excludeFolder url="file://$MODULE_DIR$/../../../libs/rx/flutter/bolshoi/test/packages" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Dart SDK" level="project" />
     <orderEntry type="library" name="Dart Packages" level="project" />
+    <orderEntry type="library" name="Flutter Plugins" level="project" />
   </component>
 </module>
